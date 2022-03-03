@@ -38,14 +38,14 @@
                 <form th:action="@{/admin}" th:object="${employee}" method="POST" autocomplete="off">
                     <div class="form-group">
                         <label>Employee ID</label>
-                        <input type="text" name="id" th:field="*{id}" class="form-control"
+                        <input type="number" name="id" th:field="*{id}" class="form-control"
                             placeholder="Enter Employee Id" required/>
                     </div>
 
                         <div class="form-group">
                             <label>Employee Name</label>
                             <input type="text" name="name" th:field="*{name}" class="form-control"
-                                placeholder="Enter Employee Name" required/>
+                                placeholder="Enter Employee Name" pattern="[A-Za-z ]+" required/>
                         </div>
 
                         <div class="form-group">
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" name="email" th:field="*{email}" class="form-control"
-                                placeholder="Enter Email" required/>
+                                   placeholder="user@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
                         </div>
 
                         <div class="box-footer">

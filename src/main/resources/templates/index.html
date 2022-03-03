@@ -14,16 +14,16 @@
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	  
 		<!-- Navbar links -->
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<div class="collapse navbar-collapse" data-target="#collapsibleNavbar">
 		  <ul class="navbar-nav">
 			<li class="nav-item">
-			  <a class="nav-link" th:href="@{/admin}">Home</a>
+			  <h5><a th:href="@{/admin}" >Home</a></h5>
 			</li>
 		  </ul>
 		</div>
 
 		<!-- Brand -->
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<div class="collapse navbar-collapse" data-target="#collapsibleNavbar">
 			<ul class="navbar-nav">
 			  <li class="navbar-brand">
 				<h1 style="font-size:xx-large;" class="navbar-brand">EMPLOYEE MANAGEMENT SYSTEM</h1>
@@ -32,20 +32,31 @@
 		  </div>
 
 		<h5 class="navbar-brand">Logged in as Admin</h5>
+		<br>
+		<h5> <a th:href="@{/logout}">Logout</a> </h5>
 		
 	  </nav> 
 	<div class="container">
-		<div class="row">
+		<div class="">
 			<h2> List of Employees</h2>
 		</div>
+
+
 
 		<div class="row">
 			<div class="col-lg-3">
 				<a th:href= "@{/admin/new}" class="btn btn-primary btn-sm mb-3"> Add Employee</a>
 			</div>
+
+			<div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert"
+				 onerror=setTimeout(function(this){ $(this).remove()},3000) style="text-align:center;">
+
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+				[[${message}]]
+			</div>
 		</div>
-		<h7  style="text-align: center;" th:text="${message}"></h7>
-	</br> <br>
+
 		<table class="table table-striped  table-bordered">
 			<thead class="table-dark">
 				<tr>
@@ -67,6 +78,7 @@
 						<a th:href = "@{/admin/edit/{id}(id=${employee.id})}"
 						class="btn btn-primary">Edit</a>
 						<a th:href = "@{/admin/delete/{id}(id=${employee.id})}"
+						   onclick="return confirm('Are you sure?')"
 						class="btn btn-danger">Delete</a>
 					</td>
 				</tr>

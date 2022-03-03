@@ -14,16 +14,16 @@
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	  
 		<!-- Navbar links -->
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<div class="collapse navbar-collapse" data-target="#collapsibleNavbar">
 		  <ul class="navbar-nav">
 			<li class="nav-item">
-			  <a class="nav-link" th:href="@{/user}">Home</a>
+				<h5><a th:href="@{/admin}" >Home</a></h5>
 			</li>
 		  </ul>
 		</div>
 
 		<!-- Brand -->
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<div class="collapse navbar-collapse" data-target="#collapsibleNavbar">
 			<ul class="navbar-nav">
 			  <li class="navbar-brand">
 				<h1 style="font-size:xx-large;" class="navbar-brand">EMPLOYEE MANAGEMENT SYSTEM</h1>
@@ -32,6 +32,8 @@
 		  </div>
 
 		<h5 class="navbar-brand">Logged in as User</h5>
+		<br>
+		<h5> <a th:href="@{/logout}">Logout</a> </h5>
 		
 	  </nav>
     </br> <br>

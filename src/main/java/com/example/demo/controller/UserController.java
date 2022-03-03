@@ -2,7 +2,8 @@ package com.example.demo.controller;
 
 
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.example.demo.exception.EmptyInputException;
 import com.example.demo.exception.ErrorMessage;
 import com.example.demo.model.User;
@@ -25,6 +26,8 @@ import org.springframework.web.context.request.WebRequest;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+
+    Logger logger = LoggerFactory.getLogger(UserController.class);
     
     private boolean deafult_value = true;
 
@@ -43,18 +46,21 @@ public class UserController {
         String encryptedPwd = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPwd);
         userRepository.save(user);
+            logger.info("Saving user");
         return "User " +user.getUserName()+ " added successfully";
         }
     }
 
     @GetMapping
     public List<User> loadUsers() {
+        logger.info("get all users");
         return userRepository.findAll();
     }
 
     @DeleteMapping("{id}")
     public String deleteUser(@PathVariable("id") int id){
         userRepository.deleteById(id);
+        logger.info("user deleted");
         return "User " +id+ " deleted successfully";
     }
 
